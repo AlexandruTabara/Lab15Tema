@@ -9,8 +9,8 @@
             new Student("Thor", "Bator", 44, Specialisation.ComputerScience),
             new Student("Pop", "Boc", 19, Specialisation.Construction),
             new Student("Lemnescu", "Eminescu", 39, Specialisation.Letters),
-            new Student("Hatz", "John", 27, Specialisation.Construction),
-            new Student("Mirca", "Solomon", 27, Specialisation.Letters),
+            new Student("Hatz", "John", 23, Specialisation.Construction),
+            new Student("Mirca", "Solomon", 29, Specialisation.Letters),
             new Student("Petru", "Melcu", 16, Specialisation.Letters),
         };
 
@@ -25,14 +25,12 @@
         Console.WriteLine(youngestStudent1);
         var youngestStudent2 = students.Aggregate((s1, s2) => s1.Age < s2.Age ? s1 : s2);
         Console.WriteLine(youngestStudent2);
-
         // Display in ascending order of age all students in the literature department
         students
             .Where(s => s.Major == Specialisation.Letters)
             .OrderBy(students => students.Age)
             .ToList()
             .ForEach(s=>Console.WriteLine(s));
-    
 
         // Display the first construction student with over 20 years of age
         var firstConstructionStudentOver20 = students.Where(s => s.Major == Specialisation.Construction && s.Age > 20).FirstOrDefault();
@@ -45,7 +43,7 @@
         // Display in descending order of age, and in alphabetical order, by name, surname and first name, all students aged between 18 and 35 years
         students
             .Where(s => s.Age >= 18 && s.Age <= 35)
-            .OrderByDescending(students => students.Age)
+            .OrderBy(students => students.Age)
             .ThenBy(s => s.Name)
             .ThenBy(s => s.FirstName).ToList().ForEach(s=>Console.WriteLine(s));
     
