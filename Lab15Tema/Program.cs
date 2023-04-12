@@ -45,7 +45,9 @@
             .Where(s => s.Age >= 18 && s.Age <= 35)
             .OrderBy(students => students.Age)
             .ThenBy(s => s.Name)
-            .ThenBy(s => s.FirstName).ToList().ForEach(s=>Console.WriteLine(s));
+            .ThenBy(s => s.FirstName)
+            .ToList()
+            .ForEach(s=>Console.WriteLine(s));
     
 
         // Show the last student on the list using LINQ
@@ -63,7 +65,7 @@
         }
 
         // Group students by age and display them
-        var groupedStudents = students.GroupBy(s => s.Age);
+        var groupedStudents = students.GroupBy(s => s.Age).ToList();
         foreach(var group in groupedStudents) 
         {
             Console.WriteLine($"Students aged {group.Key}:");
