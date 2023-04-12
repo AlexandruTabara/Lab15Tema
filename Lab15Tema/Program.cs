@@ -27,11 +27,12 @@
         Console.WriteLine(youngestStudent2);
 
         // Display in ascending order of age all students in the literature department
-        var literatureStudent = students.Where(s => s.Major == Specialisation.Letters).OrderBy(students => students.Age);
-        foreach (var student in literatureStudent)
-        {
-            Console.WriteLine(student); 
-        }
+        students
+            .Where(s => s.Major == Specialisation.Letters)
+            .OrderBy(students => students.Age)
+            .ToList()
+            .ForEach(s=>Console.WriteLine(s));
+    
 
         // Display the first construction student with over 20 years of age
         var firstConstructionStudentOver20 = students.Where(s => s.Major == Specialisation.Construction && s.Age > 20).FirstOrDefault();
@@ -42,13 +43,12 @@
         Console.WriteLine(averageAge);
 
         // Display in descending order of age, and in alphabetical order, by name, surname and first name, all students aged between 18 and 35 years
-        var sortedStudents = students.Where(s => s.Age >= 18 && s.Age <= 35)
-                                    .OrderByDescending(students => students.Age)
-                                    .ThenBy(s => s.Name)
-                                    .ThenBy(s => s.FirstName);
-        foreach (var student in sortedStudents) {
-            Console.WriteLine(student);
-        }
+        students
+            .Where(s => s.Age >= 18 && s.Age <= 35)
+            .OrderByDescending(students => students.Age)
+            .ThenBy(s => s.Name)
+            .ThenBy(s => s.FirstName).ToList().ForEach(s=>Console.WriteLine(s));
+    
 
         // Show the last student on the list using LINQ
         var lastStudent = students.LastOrDefault();
