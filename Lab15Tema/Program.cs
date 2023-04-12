@@ -17,11 +17,11 @@
         // Display the oldest student from Computer Science
         var oldestComputerScienceStudent = students.Where(s => s.Major == Specialisation.ComputerScience)
                                                    .OrderByDescending(s => s.Age)
-                                                   .First();
+                                                   .FirstOrDefault();
         Console.WriteLine(oldestComputerScienceStudent);
 
         // Display the youngest student in several ways
-        var youngestStudent1 = students.OrderBy(s => s.Age).First();
+        var youngestStudent1 = students.OrderBy(s => s.Age).FirstOrDefault();
         Console.WriteLine(youngestStudent1);
         var youngestStudent2 = students.Aggregate((s1, s2) => s1.Age < s2.Age ? s1 : s2);
         Console.WriteLine(youngestStudent2);
@@ -34,7 +34,7 @@
         }
 
         // Display the first construction student with over 20 years of age
-        var firstConstructionStudentOver20 = students.Where(s => s.Major == Specialisation.Construction && s.Age > 20).First();
+        var firstConstructionStudentOver20 = students.Where(s => s.Major == Specialisation.Construction && s.Age > 20).FirstOrDefault();
         Console.WriteLine(firstConstructionStudentOver20);
 
         // Display students aged average age of students
